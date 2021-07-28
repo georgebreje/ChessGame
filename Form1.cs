@@ -17,7 +17,8 @@ namespace ChessGame
         public float BorderH { get; set; }
         public float BorderW { get; set; }
         PointF[] points = new PointF[4];
-        PointF[] pointz = new PointF[4];
+
+        Dictionary<Field, IPiece> Dict = new Dictionary<Field, IPiece>();
 
         Graphics grp;
 
@@ -30,35 +31,40 @@ namespace ChessGame
         {
             var p = sender as Panel;
             var g = e.Graphics;
-            float a = 0;
-
+            //float a = 0;
+            Field.a = 0;
             for (int j = 1; j <= 8; j++)
             {
-                float b = 0;
+                //float b = 0;
+                Field.b = 0;
                 for (int i = 1; i <= 8; i++)
                 {
-                    points[0] = new PointF(b, a);
-                    points[1] = new PointF(b, a + BorderH);
-                    points[2] = new PointF(b + BorderW, a + BorderH);
-                    points[3] = new PointF(b + BorderW, a);
+                    Field f = new Field(BorderW, BorderH);
+                    f.CreatePolygon();
+                    //points[0] = new PointF(b, a);
+                    //points[1] = new PointF(b, a + BorderH);
+                    //points[2] = new PointF(b + BorderW, a + BorderH);
+                    //points[3] = new PointF(b + BorderW, a);
 
                     if (j % 2 != 0)
                     {
                         if (i % 2 != 0)
-                            Redraw(grp, Color.SaddleBrown);
+                            f.Redraw(grp, Color.SaddleBrown);
                         else
-                            Redraw(grp, Color.Chocolate);
+                            f.Redraw(grp, Color.Chocolate);
                     }
                     else
                     {
                         if (i % 2 == 0)
-                            Redraw(grp, Color.SaddleBrown);
+                            f.Redraw(grp, Color.SaddleBrown);
                         else
-                            Redraw(grp, Color.Chocolate);
+                            f.Redraw(grp, Color.Chocolate);
                     }
-                    b += BorderW;
+                    // b += BorderW;
+                    Field.b += BorderW;
                 }
-                a += BorderH;
+                //a += BorderH;
+                Field.a += BorderH;
             }
         }
 
@@ -67,7 +73,6 @@ namespace ChessGame
 
         }
 
-        public static Random rnd = new Random();
 
         private void panel1_SizeChanged(object sender, EventArgs e)
         {
@@ -78,34 +83,40 @@ namespace ChessGame
             Lungime = p.Width;
             BorderW = Lungime / 8;
             BorderH = Latime / 8;
-            float a = 0;
+            //float a = 0;
+            Field.a = 0;
             for (int j = 1; j <= 8; j++)
             {
-                float b = 0;
+                //float b = 0;
+                Field.b = 0;
                 for (int i = 1; i <= 8; i++)
                 {
-                    points[0] = new PointF(b, a);
-                    points[1] = new PointF(b, a + BorderH);
-                    points[2] = new PointF(b + BorderW, a + BorderH);
-                    points[3] = new PointF(b + BorderW, a);
+                    Field f = new Field(BorderW, BorderH);
+                    f.CreatePolygon();
+                    //points[0] = new PointF(b, a);
+                    //points[1] = new PointF(b, a + BorderH);
+                    //points[2] = new PointF(b + BorderW, a + BorderH);
+                    //points[3] = new PointF(b + BorderW, a);
 
                     if (j % 2 != 0)
                     {
                         if (i % 2 != 0)
-                            Redraw(grp, Color.SaddleBrown);
+                            f.Redraw(grp, Color.SaddleBrown);
                         else
-                            Redraw(grp, Color.Chocolate);
+                            f.Redraw(grp, Color.Chocolate);
                     }
                     else
                     {
                         if (i % 2 == 0)
-                            Redraw(grp, Color.SaddleBrown);
+                            f.Redraw(grp, Color.SaddleBrown);
                         else
-                            Redraw(grp, Color.Chocolate);
+                            f.Redraw(grp, Color.Chocolate);
                     }
-                    b += BorderW;
+                    //b += BorderW;
+                    Field.b += BorderW;
                 }
-                a += BorderH;
+                // a += BorderH;
+                Field.a += BorderH;
             }
         }
 
