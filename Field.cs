@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace ChessGame
 {
-    class Field
+    public class Field
     {
         public PointF[] points = new PointF[4]; // polygon coordinates
         private float _width;
@@ -20,7 +20,6 @@ namespace ChessGame
         {
             _width = width;
             _height = height;
-
         }
 
         public void CreatePolygon()

@@ -31,41 +31,31 @@ namespace ChessGame
         {
             var p = sender as Panel;
             var g = e.Graphics;
-            //float a = 0;
-            Field.a = 0;
-            for (int j = 1; j <= 8; j++)
+            float d = p.Width;
+            float x = p.Height;
+            Table t = new Table(d, x);
+            t.InitializeFields();
+            for (int i = 0; i < 8; i++)
             {
-                //float b = 0;
-                Field.b = 0;
-                for (int i = 1; i <= 8; i++)
+                for (int j = 0; j < 8; j++)
                 {
-                    Field f = new Field(BorderW, BorderH);
-                    f.CreatePolygon();
-                    //points[0] = new PointF(b, a);
-                    //points[1] = new PointF(b, a + BorderH);
-                    //points[2] = new PointF(b + BorderW, a + BorderH);
-                    //points[3] = new PointF(b + BorderW, a);
-
-                    if (j % 2 != 0)
+                    if (i % 2 == 0)
                     {
-                        if (i % 2 != 0)
-                            f.Redraw(grp, Color.SaddleBrown);
+                        if (j % 2 == 0)
+                            t[i, j].Redraw(grp, Color.SaddleBrown);
                         else
-                            f.Redraw(grp, Color.Chocolate);
+                            t[i, j].Redraw(grp, Color.Chocolate);
                     }
                     else
                     {
-                        if (i % 2 == 0)
-                            f.Redraw(grp, Color.SaddleBrown);
+                        if (j % 2 == 0)
+                            t[i, j].Redraw(grp, Color.Chocolate);
                         else
-                            f.Redraw(grp, Color.Chocolate);
+                            t[i, j].Redraw(grp, Color.SaddleBrown);
                     }
-                    // b += BorderW;
-                    Field.b += BorderW;
                 }
-                //a += BorderH;
-                Field.a += BorderH;
             }
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -78,46 +68,36 @@ namespace ChessGame
         {
             var p = sender as Panel;
             grp = panel1.CreateGraphics();
-            Refresh();
             Latime = p.Height;
             Lungime = p.Width;
+            Table t = new Table(Latime, Lungime);
+            t.InitializeFields();
+
             BorderW = Lungime / 8;
             BorderH = Latime / 8;
-            //float a = 0;
-            Field.a = 0;
-            for (int j = 1; j <= 8; j++)
-            {
-                //float b = 0;
-                Field.b = 0;
-                for (int i = 1; i <= 8; i++)
-                {
-                    Field f = new Field(BorderW, BorderH);
-                    f.CreatePolygon();
-                    //points[0] = new PointF(b, a);
-                    //points[1] = new PointF(b, a + BorderH);
-                    //points[2] = new PointF(b + BorderW, a + BorderH);
-                    //points[3] = new PointF(b + BorderW, a);
 
-                    if (j % 2 != 0)
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    if (i % 2 == 0)
                     {
-                        if (i % 2 != 0)
-                            f.Redraw(grp, Color.SaddleBrown);
+                        if (j % 2 == 0)
+                            t[i, j].Redraw(grp, Color.SaddleBrown);
                         else
-                            f.Redraw(grp, Color.Chocolate);
+                            t[i, j].Redraw(grp, Color.Chocolate);
                     }
                     else
                     {
-                        if (i % 2 == 0)
-                            f.Redraw(grp, Color.SaddleBrown);
+                        if (j % 2 == 0)
+                            t[i, j].Redraw(grp, Color.Chocolate);
                         else
-                            f.Redraw(grp, Color.Chocolate);
+                            t[i, j].Redraw(grp, Color.SaddleBrown);
                     }
-                    //b += BorderW;
-                    Field.b += BorderW;
                 }
-                // a += BorderH;
-                Field.a += BorderH;
             }
+
+            
         }
 
         private void Redraw(Graphics g, Color c)
@@ -125,18 +105,6 @@ namespace ChessGame
             Brush brush = new SolidBrush(c);
 
             g.FillPolygon(brush, points);
-        }
-
-        private void Redraw(Graphics g)
-        {
-            Brush brush = new SolidBrush(Color.SaddleBrown);
-
-            g.FillPolygon(brush, points);
-        }
-
-        private void Refresh(Graphics g)
-        {
-            g.FillPolygon(new SolidBrush(Color.Black), points);
         }
     }
 }
