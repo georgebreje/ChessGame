@@ -20,7 +20,7 @@ namespace ChessGame
         PointF[] pointz = new PointF[4];
 
         Graphics grp;
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -31,19 +31,34 @@ namespace ChessGame
             var p = sender as Panel;
             var g = e.Graphics;
             float a = 0;
-            float b = 0;
-            
-            for (int i = 1; i <= 8; i++)
+
+            for (int j = 1; j <= 8; j++)
             {
-                points[0] = new PointF(b, 0);
-                points[1] = new PointF(b, BorderH);
-                points[2] = new PointF(b + BorderW, BorderH);
-                points[3] = new PointF(b + BorderW, 0);
-                if (i % 2 != 0)
-                    Redraw(grp, Color.SaddleBrown);
-                else
-                    Redraw(grp, Color.Chocolate);
-                b += BorderW;
+                float b = 0;
+                for (int i = 1; i <= 8; i++)
+                {
+                    points[0] = new PointF(b, a);
+                    points[1] = new PointF(b, a + BorderH);
+                    points[2] = new PointF(b + BorderW, a + BorderH);
+                    points[3] = new PointF(b + BorderW, a);
+
+                    if (j % 2 != 0)
+                    {
+                        if (i % 2 != 0)
+                            Redraw(grp, Color.SaddleBrown);
+                        else
+                            Redraw(grp, Color.Chocolate);
+                    }
+                    else
+                    {
+                        if (i % 2 == 0)
+                            Redraw(grp, Color.SaddleBrown);
+                        else
+                            Redraw(grp, Color.Chocolate);
+                    }
+                    b += BorderW;
+                }
+                a += BorderH;
             }
         }
 
@@ -58,61 +73,40 @@ namespace ChessGame
         {
             var p = sender as Panel;
             grp = panel1.CreateGraphics();
-            Refresh(); 
+            Refresh();
             Latime = p.Height;
             Lungime = p.Width;
             BorderW = Lungime / 8;
             BorderH = Latime / 8;
             float a = 0;
-            float b = 0;
-
-            for (int i = 1; i <= 8; i++)
+            for (int j = 1; j <= 8; j++)
             {
-                points[0] = new PointF(b, 0);
-                points[1] = new PointF(b, BorderH);
-                points[2] = new PointF(b + BorderW, BorderH);
-                points[3] = new PointF(b + BorderW, 0);
+                float b = 0;
+                for (int i = 1; i <= 8; i++)
+                {
+                    points[0] = new PointF(b, a);
+                    points[1] = new PointF(b, a + BorderH);
+                    points[2] = new PointF(b + BorderW, a + BorderH);
+                    points[3] = new PointF(b + BorderW, a);
 
-                if (i % 2 != 0)
-                    Redraw(grp, Color.SaddleBrown);
-                else
-                    Redraw(grp, Color.Chocolate);
-
-                b += BorderW;
+                    if (j % 2 != 0)
+                    {
+                        if (i % 2 != 0)
+                            Redraw(grp, Color.SaddleBrown);
+                        else
+                            Redraw(grp, Color.Chocolate);
+                    }
+                    else
+                    {
+                        if (i % 2 == 0)
+                            Redraw(grp, Color.SaddleBrown);
+                        else
+                            Redraw(grp, Color.Chocolate);
+                    }
+                    b += BorderW;
+                }
+                a += BorderH;
             }
-            //pointz[0] = new PointF(BorderW, 0);
-            //pointz[1] = new PointF(BorderW, BorderH);
-            //pointz[2] = new PointF(BorderW + BorderW, BorderH);
-            //pointz[3] = new PointF(BorderW + BorderW, 0);
-
-            //grp.FillPolygon(new SolidBrush(Color.Black), pointz);
-
-
-            //float a = 0;
-            //for (int i = 1; i <= 8; i++)  
-            //{
-            //    float b = 0;
-            //    for (int j = 1; j <= 8; j++)
-            //    {
-            //        if (i % 2 != 0)
-            //        {
-            //            if (j % 2 != 0)
-            //            {
-            //                Redraw(grp, Color.SaddleBrown);
-            //            }
-            //            else
-            //                Redraw(grp, Color.White);
-            //        }
-            //        else
-            //        {
-
-            //        }
-            //        b += BorderW;
-            //    }
-            //    a += BorderH;
-            //}
-
-            //Redraw(grp);
         }
 
         private void Redraw(Graphics g, Color c)
