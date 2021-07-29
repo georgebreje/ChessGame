@@ -35,7 +35,7 @@ namespace ChessGame
             Latime = p.Height;
             Lungime = p.Width;
             FillMatrix();
-
+            
         }
 
         private void panel1_SizeChanged(object sender, EventArgs e)
@@ -88,5 +88,38 @@ namespace ChessGame
 
         }
 
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void panel1_MouseClick(object sender, MouseEventArgs e)
+        {
+            
+
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    if (e.X > Fields[i, j].points[0].X && e.X < Fields[i, j].points[2].X
+                                    && e.Y > Fields[i, j].points[0].Y && e.Y < Fields[i, j].points[2].Y)
+                    {
+                        Fields[i, j].Select(grp);
+                    }
+                }
+            }
+            
+           
+            
+
+            grp.FillEllipse(new SolidBrush(Color.Red), e.X, e.Y, 3, 3);
+            //MessageBox.Show($"Clicked at: {e.X}, {e.Y} \n" +
+            //    $"Fields[0,0].points[0]: {Fields[0, 0].points[0].X}, {Fields[0, 0].points[0].Y} \n" +
+            //    $"Fields[0,0].points[1]: {Fields[0, 0].points[1].X}, {Fields[0, 0].points[1].Y} \n" +
+            //    $"Fields[0,0].points[2]: {Fields[0, 0].points[2].X}, {Fields[0, 0].points[2].Y} \n" +
+            //    $"Fields[0,0].points[3]: {Fields[0, 0].points[3].X}, {Fields[0, 0].points[3].Y} \n" );
+        }
+
+        
     }
 }

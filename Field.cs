@@ -14,6 +14,8 @@ namespace ChessGame
         private float _height;
         public static float a;
         public static float b;
+        public Color Color { get; set; }
+        public bool Selected { get; set; } = true;
 
 
         public Field(float width, float height)
@@ -28,15 +30,31 @@ namespace ChessGame
             points[1] = new PointF(b, a + _height);
             points[2] = new PointF(b + _width, a + _height);
             points[3] = new PointF(b + _width, a);
-            Draw(g, c);
+            Color = c;
+            DrawField(g, c);
         }
 
-        public void Draw(Graphics g, Color c)
+
+        public void DrawField(Graphics g, Color c)
         {
             Brush brush = new SolidBrush(c);
 
             g.FillPolygon(brush, points);
         }
 
+        public void Select(Graphics g)
+        {
+            
+            if (Selected == true)
+            {
+                g.DrawPolygon(new Pen(Color.Yellow), points);
+                Selected = false;
+            }
+            else
+            {
+                g.DrawPolygon(new Pen(Color), points);
+                Selected = true;
+            }
+        }
     }
 }
