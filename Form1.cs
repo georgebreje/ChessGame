@@ -14,9 +14,10 @@ namespace ChessGame
     {
         public float Latime { get; set; }
         public float Lungime { get; set; }
-        public float BorderH { get; set; }
-        public float BorderW { get; set; }
-        PointF[] points = new PointF[4];
+        public float FieldH { get; set; }
+        public float FieldW { get; set; }
+
+        public Field[,] Fields = new Field[8, 8];
 
         Dictionary<Field, IPiece> Dict = new Dictionary<Field, IPiece>();
 
@@ -31,38 +32,11 @@ namespace ChessGame
         {
             var p = sender as Panel;
             var g = e.Graphics;
-            float d = p.Width;
-            float x = p.Height;
-            Table t = new Table(d, x);
-            t.InitializeFields();
-            for (int i = 0; i < 8; i++)
-            {
-                for (int j = 0; j < 8; j++)
-                {
-                    if (i % 2 == 0)
-                    {
-                        if (j % 2 == 0)
-                            t[i, j].Redraw(grp, Color.SaddleBrown);
-                        else
-                            t[i, j].Redraw(grp, Color.Chocolate);
-                    }
-                    else
-                    {
-                        if (j % 2 == 0)
-                            t[i, j].Redraw(grp, Color.Chocolate);
-                        else
-                            t[i, j].Redraw(grp, Color.SaddleBrown);
-                    }
-                }
-            }
-            
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
+            Latime = p.Height;
+            Lungime = p.Width;
+            FillMatrix();
 
         }
-
 
         private void panel1_SizeChanged(object sender, EventArgs e)
         {
@@ -70,41 +44,49 @@ namespace ChessGame
             grp = panel1.CreateGraphics();
             Latime = p.Height;
             Lungime = p.Width;
-            Table t = new Table(Latime, Lungime);
-            t.InitializeFields();
+            FieldW = Lungime / 8;
+            FieldH = Latime / 8;
+            FillMatrix();
 
-            BorderW = Lungime / 8;
-            BorderH = Latime / 8;
 
+
+        }
+
+        private void FillMatrix()
+        {
+            Field.a = 0;
             for (int i = 0; i < 8; i++)
             {
+                Field.b = 0;
                 for (int j = 0; j < 8; j++)
                 {
+                    Field f = new Field(FieldW, FieldH);
                     if (i % 2 == 0)
                     {
                         if (j % 2 == 0)
-                            t[i, j].Redraw(grp, Color.SaddleBrown);
+                            f.CreatePolygon(grp, Color.SaddleBrown);
+
                         else
-                            t[i, j].Redraw(grp, Color.Chocolate);
+                            f.CreatePolygon(grp, Color.Chocolate);
                     }
                     else
                     {
                         if (j % 2 == 0)
-                            t[i, j].Redraw(grp, Color.Chocolate);
+                            f.CreatePolygon(grp, Color.Chocolate);
                         else
-                            t[i, j].Redraw(grp, Color.SaddleBrown);
+                            f.CreatePolygon(grp, Color.SaddleBrown);
                     }
+                    Fields[i, j] = f;
+                    Field.b += FieldW;
                 }
-            }
-
-            
+                Field.a += FieldH;
+            }    
         }
 
-        private void Redraw(Graphics g, Color c)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            Brush brush = new SolidBrush(c);
 
-            g.FillPolygon(brush, points);
         }
+
     }
 }

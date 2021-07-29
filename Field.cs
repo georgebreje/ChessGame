@@ -22,15 +22,16 @@ namespace ChessGame
             _height = height;
         }
 
-        public void CreatePolygon()
+        public void CreatePolygon(Graphics g, Color c)
         {
             points[0] = new PointF(b, a);
             points[1] = new PointF(b, a + _height);
             points[2] = new PointF(b + _width, a + _height);
             points[3] = new PointF(b + _width, a);
+            Draw(g, c);
         }
 
-        public void Redraw(Graphics g, Color c)
+        public void Draw(Graphics g, Color c)
         {
             Brush brush = new SolidBrush(c);
 
