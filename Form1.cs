@@ -36,7 +36,9 @@ namespace ChessGame
             Latime = p.Height;
             Lungime = p.Width;
             FillMatrix();
-            Dict.Add(Fields[0, 0], new Rook(Fields[0,0], pictureBox1));
+            //Dict.Add(Fields[0, 0], new Rook(Fields[0,0], pictureBox1));
+            DictInit();
+            
 
 
         }
@@ -50,18 +52,42 @@ namespace ChessGame
             FieldW = Lungime / 8;
             FieldH = Latime / 8;
             FillMatrix();
+
+        }
+
+        private void DictInit()
+        {
+            Dict.Add(Fields[0, 0], new Rook(Fields[0, 0], wRook1));
+            Dict.Add(Fields[0, 1], new Rook(Fields[0, 1], wKnight1));
+            Dict.Add(Fields[0, 2], new Rook(Fields[0, 2], wBishop1));
+            Dict.Add(Fields[0, 3], new Rook(Fields[0, 3], wQueen));
+            Dict.Add(Fields[0, 4], new Rook(Fields[0, 4], wKing));
+            Dict.Add(Fields[0, 5], new Rook(Fields[0, 5], wBishop2));
+            Dict.Add(Fields[0, 6], new Rook(Fields[0, 6], wKnight2));
+            Dict.Add(Fields[0, 7], new Rook(Fields[0, 7], wRook2));
+
+            Dict.Add(Fields[1, 0], new Pawn(Fields[1, 0], whitePawn1));
+            Dict.Add(Fields[1, 1], new Pawn(Fields[1, 1], whitePawn2));
+            Dict.Add(Fields[1, 2], new Pawn(Fields[1, 2], whitePawn3));
+            Dict.Add(Fields[1, 3], new Pawn(Fields[1, 3], whitePawn4));
+            Dict.Add(Fields[1, 4], new Pawn(Fields[1, 4], whitePawn5));
+            Dict.Add(Fields[1, 5], new Pawn(Fields[1, 5], whitePawn6));
+            Dict.Add(Fields[1, 6], new Pawn(Fields[1, 6], whitePawn7));
+            Dict.Add(Fields[1, 7], new Pawn(Fields[1, 7], whitePawn8));
         }
 
         private void FillMatrix()
         {
-            Field.a = 0;
+            Field.heightToAdd = 0;
             for (int i = 0; i < 8; i++)
             {
-                Field.b = 0;
+                Field.widthToAdd = 0;
                 for (int j = 0; j < 8; j++)
                 {
                     Field f = new Field(FieldW, FieldH);
-                    pictureBox1.Size = new Size((int)Lungime / 8, (int)Latime / 8);
+                    whitePawn1.Width = FieldW;
+                    whitePawn1.Height = FieldH;
+
                     if (i % 2 == 0)
                     {
                         if (j % 2 == 0)
@@ -78,9 +104,9 @@ namespace ChessGame
                             f.CreatePolygon(grp, Color.SaddleBrown);
                     }
                     Fields[i, j] = f;
-                    Field.b += FieldW;
+                    Field.widthToAdd += FieldW;
                 }
-                Field.a += FieldH;
+                Field.heightToAdd += FieldH;
             }
         }
 
@@ -121,15 +147,6 @@ namespace ChessGame
                     }
                 }
             }
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
-        {
         }
     }
 }

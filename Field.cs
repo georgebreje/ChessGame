@@ -12,8 +12,8 @@ namespace ChessGame
         public Point[] points = new Point[4]; // polygon coordinates
         public int Width;
         public int Height;
-        public static int a;
-        public static int b;
+        public static int heightToAdd;
+        public static int widthToAdd;
         public Color Color { get; set; }
         public bool Selected { get; set; } = true;
         public int ClickCount { get; set; }
@@ -26,10 +26,10 @@ namespace ChessGame
 
         public void CreatePolygon(Graphics g, Color c)
         {
-            points[0] = new Point(b, a);
-            points[1] = new Point(b, a + Height);
-            points[2] = new Point(b + Width, a + Height);
-            points[3] = new Point(b + Width, a);
+            points[0] = new Point(widthToAdd, heightToAdd);
+            points[1] = new Point(widthToAdd, heightToAdd + Height);
+            points[2] = new Point(widthToAdd + Width, heightToAdd + Height);
+            points[3] = new Point(widthToAdd + Width, heightToAdd);
             Color = c;
             DrawField(g, c);
         }

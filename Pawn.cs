@@ -10,7 +10,7 @@ namespace ChessGame
 {
     public class Pawn : Piece
     {
-        public Pawn(Field f, PictureBox pictureBox) : base(f, pictureBox)
+        public Pawn(Field f, CustomPictureBox pictureBox) : base(f, pictureBox)
         {
 
         }

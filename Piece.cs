@@ -8,19 +8,32 @@ using System.Windows.Forms;
 
 namespace ChessGame
 {
-    public abstract class Piece
+    public abstract class Piece 
     {
-        public  Color Color { get; set; }
-        public  PictureBox PictureBox { get; set; }
-        public  Piece(Field f, PictureBox pictureBox)
+        public  Color ColorHolder { get; set; }
+        public  CustomPictureBox PictureBox { get; set; }
+
+        public bool Selected { get; set; }
+        public  Piece(Field f, CustomPictureBox pictureBox)
         {
             PictureBox = pictureBox;
             PictureBox.BackColor = f.Color;
             PictureBox.Location = new Point(f.points[0].X, f.points[0].Y);
             PictureBox.Size = new Size(f.Width, f.Height);
+            PictureBox.AuxColor = f.Color;
+            ColorHolder = f.Color;
+            Selected = PictureBox.Selected;
         }
         public abstract void Direction();
 
 
+        public void Deselect()
+        {
+            PictureBox.BackColor = ColorHolder; 
+        }
+
+        
+
+       
     }
 }

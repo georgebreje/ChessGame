@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ChessGame
 {
-    public class Engine
+    interface IPiece
     {
-        
+
     }
 }

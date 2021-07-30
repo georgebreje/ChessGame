@@ -10,7 +10,7 @@ namespace ChessGame
 {
     public class Rook : Piece
     {
-        public Rook(Field f, PictureBox pictureBox) : base(f,pictureBox)
+        public Rook(Field f, CustomPictureBox pictureBox) : base(f,pictureBox)
         {
 
         }
