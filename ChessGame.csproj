@@ -58,8 +58,9 @@
     </Compile>
     <Compile Include="IPiece.cs" />
     <Compile Include="IPieceFactory.cs" />
+    <Compile Include="Knight.cs" />
     <Compile Include="Pawn.cs" />
-    <Compile Include="PawnFactory.cs" />
+    <Compile Include="KnightFactory.cs" />
     <Compile Include="Piece.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
