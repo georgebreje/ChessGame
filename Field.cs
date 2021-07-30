@@ -9,27 +9,27 @@ namespace ChessGame
 {
     public class Field
     {
-        public PointF[] points = new PointF[4]; // polygon coordinates
-        private float _width;
-        private float _height;
-        public static float a;
-        public static float b;
+        public Point[] points = new Point[4]; // polygon coordinates
+        public int Width;
+        public int Height;
+        public static int a;
+        public static int b;
         public Color Color { get; set; }
         public bool Selected { get; set; } = true;
         public int ClickCount { get; set; }
         
-        public Field(float width, float height)
+        public Field(int width, int height)
         {
-            _width = width;
-            _height = height;
+            Width = width;
+            Height = height;
         }
 
         public void CreatePolygon(Graphics g, Color c)
         {
-            points[0] = new PointF(b, a);
-            points[1] = new PointF(b, a + _height);
-            points[2] = new PointF(b + _width, a + _height);
-            points[3] = new PointF(b + _width, a);
+            points[0] = new Point(b, a);
+            points[1] = new Point(b, a + Height);
+            points[2] = new Point(b + Width, a + Height);
+            points[3] = new Point(b + Width, a);
             Color = c;
             DrawField(g, c);
         }
@@ -44,11 +44,11 @@ namespace ChessGame
 
         public void Deselect(Graphics g)
         {
-            g.DrawPolygon(new Pen(Color), points);
+            g.FillPolygon(new SolidBrush(Color), points);
 
             if (Selected == false)
             {
-                g.DrawPolygon(new Pen(Color), points);
+                g.FillPolygon(new SolidBrush(Color), points);
                 Selected = true;
             }
         }
@@ -57,7 +57,7 @@ namespace ChessGame
         {
             if (Selected == true)
             {
-                g.DrawPolygon(new Pen(Color.Yellow), points);
+                g.FillPolygon(new SolidBrush(Color.Yellow), points);
                 Selected = false;
             }
             else

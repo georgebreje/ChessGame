@@ -12,14 +12,15 @@ namespace ChessGame
 {
     public partial class Form1 : Form
     {
-        public float Latime { get; set; }
-        public float Lungime { get; set; }
-        public float FieldH { get; set; }
-        public float FieldW { get; set; }
+        public int Latime { get; set; }
+        public int Lungime { get; set; }
+        public int FieldH { get; set; }
+        public int FieldW { get; set; }
 
         public Field[,] Fields = new Field[8, 8];
 
         Dictionary<Field, Piece> Dict = new Dictionary<Field, Piece>();
+
 
         Graphics grp;
 
@@ -35,9 +36,9 @@ namespace ChessGame
             Latime = p.Height;
             Lungime = p.Width;
             FillMatrix();
-            pictureBox1.BackColor = Color.SaddleBrown;
-            pictureBox1.Location = new Point((int)Fields[0, 0].points[0].X, (int)Fields[0, 0].points[0].X);
-            pictureBox1.Size = new Size((int)Lungime / 8, (int)Latime / 8);
+            Dict.Add(Fields[0, 0], new Rook(Fields[0,0], pictureBox1));
+
+
         }
 
         private void panel1_SizeChanged(object sender, EventArgs e)
@@ -49,8 +50,6 @@ namespace ChessGame
             FieldW = Lungime / 8;
             FieldH = Latime / 8;
             FillMatrix();
-            pictureBox1.Location = new Point((int)Fields[0, 0].points[0].X, (int)Fields[0, 0].points[0].X);
-            pictureBox1.Size = new Size((int)Lungime / 8, (int)Latime / 8);
         }
 
         private void FillMatrix()
@@ -87,13 +86,9 @@ namespace ChessGame
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Dict.Add(Fields[0, 0], new );
-        }
-
-        private void Form1_MouseClick(object sender, MouseEventArgs e)
-        {
 
         }
+
         int iToDeselect = 0;
         int jToDeselect = 0;
         private void panel1_MouseClick(object sender, MouseEventArgs e)
@@ -123,7 +118,6 @@ namespace ChessGame
                             jToDeselect = j;
                             break;
                         }
-                        
                     }
                 }
             }
@@ -131,7 +125,11 @@ namespace ChessGame
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-           
+            
+        }
+
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+        {
         }
     }
 }

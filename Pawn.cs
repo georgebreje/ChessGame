@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace ChessGame
 {
-    public class Rook : Piece
+    public class Pawn : Piece
     {
-        public Rook(Field f, PictureBox pictureBox) : base(f,pictureBox)
+        public Pawn(Field f, PictureBox pictureBox) : base(f, pictureBox)
         {
 
         }
         public override void Direction()
         {
-            
+
         }
     }
 }

@@ -10,12 +10,15 @@ namespace ChessGame
 {
     public abstract class Piece
     {
-        public int Width { get; set; }
-        
-        public int Height { get; set; }
-        
-        public abstract PictureBox PictureBox { get; set; }
-
+        public  Color Color { get; set; }
+        public  PictureBox PictureBox { get; set; }
+        public  Piece(Field f, PictureBox pictureBox)
+        {
+            PictureBox = pictureBox;
+            PictureBox.BackColor = f.Color;
+            PictureBox.Location = new Point(f.points[0].X, f.points[0].Y);
+            PictureBox.Size = new Size(f.Width, f.Height);
+        }
         public abstract void Direction();
 
 
