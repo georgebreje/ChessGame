@@ -19,7 +19,7 @@ namespace ChessGame
 
         public Field[,] Fields = new Field[8, 8];
 
-        Dictionary<Field, IPiece> Dict = new Dictionary<Field, IPiece>();
+        Dictionary<Field, Piece> Dict = new Dictionary<Field, Piece>();
 
         Graphics grp;
 
@@ -35,7 +35,9 @@ namespace ChessGame
             Latime = p.Height;
             Lungime = p.Width;
             FillMatrix();
-            
+            pictureBox1.BackColor = Color.SaddleBrown;
+            pictureBox1.Location = new Point((int)Fields[0, 0].points[0].X, (int)Fields[0, 0].points[0].X);
+            pictureBox1.Size = new Size((int)Lungime / 8, (int)Latime / 8);
         }
 
         private void panel1_SizeChanged(object sender, EventArgs e)
@@ -47,9 +49,8 @@ namespace ChessGame
             FieldW = Lungime / 8;
             FieldH = Latime / 8;
             FillMatrix();
-
-
-
+            pictureBox1.Location = new Point((int)Fields[0, 0].points[0].X, (int)Fields[0, 0].points[0].X);
+            pictureBox1.Size = new Size((int)Lungime / 8, (int)Latime / 8);
         }
 
         private void FillMatrix()
@@ -61,6 +62,7 @@ namespace ChessGame
                 for (int j = 0; j < 8; j++)
                 {
                     Field f = new Field(FieldW, FieldH);
+                    pictureBox1.Size = new Size((int)Lungime / 8, (int)Latime / 8);
                     if (i % 2 == 0)
                     {
                         if (j % 2 == 0)
@@ -80,46 +82,56 @@ namespace ChessGame
                     Field.b += FieldW;
                 }
                 Field.a += FieldH;
-            }    
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            //Dict.Add(Fields[0, 0], new );
         }
 
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
-            
-        }
 
+        }
+        int iToDeselect = 0;
+        int jToDeselect = 0;
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
-            
+            Fields[iToDeselect, jToDeselect].Deselect(grp);
 
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 8; j++)
                 {
                     if (e.X > Fields[i, j].points[0].X && e.X < Fields[i, j].points[2].X
-                                    && e.Y > Fields[i, j].points[0].Y && e.Y < Fields[i, j].points[2].Y)
+                     && e.Y > Fields[i, j].points[0].Y && e.Y < Fields[i, j].points[2].Y)
                     {
-                        Fields[i, j].Select(grp);
+                        if (i == iToDeselect && j == jToDeselect)
+                        {
+                            Fields[i, j].ClickCount++;
+                            if (Fields[i, j].ClickCount % 2 == 0)
+                                Fields[i, j].Deselect(grp);
+                            else
+                                Fields[i, j].Select(grp);
+                        }
+                        else
+                        {
+                            Fields[i, j].Select(grp);
+                            Fields[i, j].ClickCount++;
+                            iToDeselect = i;
+                            jToDeselect = j;
+                            break;
+                        }
+                        
                     }
                 }
             }
-            
-           
-            
-
-            grp.FillEllipse(new SolidBrush(Color.Red), e.X, e.Y, 3, 3);
-            //MessageBox.Show($"Clicked at: {e.X}, {e.Y} \n" +
-            //    $"Fields[0,0].points[0]: {Fields[0, 0].points[0].X}, {Fields[0, 0].points[0].Y} \n" +
-            //    $"Fields[0,0].points[1]: {Fields[0, 0].points[1].X}, {Fields[0, 0].points[1].Y} \n" +
-            //    $"Fields[0,0].points[2]: {Fields[0, 0].points[2].X}, {Fields[0, 0].points[2].Y} \n" +
-            //    $"Fields[0,0].points[3]: {Fields[0, 0].points[3].X}, {Fields[0, 0].points[3].Y} \n" );
         }
 
-        
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

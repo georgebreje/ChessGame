@@ -16,8 +16,8 @@ namespace ChessGame
         public static float b;
         public Color Color { get; set; }
         public bool Selected { get; set; } = true;
-
-
+        public int ClickCount { get; set; }
+        
         public Field(float width, float height)
         {
             _width = width;
@@ -42,9 +42,19 @@ namespace ChessGame
             g.FillPolygon(brush, points);
         }
 
+        public void Deselect(Graphics g)
+        {
+            g.DrawPolygon(new Pen(Color), points);
+
+            if (Selected == false)
+            {
+                g.DrawPolygon(new Pen(Color), points);
+                Selected = true;
+            }
+        }
+
         public void Select(Graphics g)
         {
-            
             if (Selected == true)
             {
                 g.DrawPolygon(new Pen(Color.Yellow), points);
@@ -52,8 +62,7 @@ namespace ChessGame
             }
             else
             {
-                g.DrawPolygon(new Pen(Color), points);
-                Selected = true;
+                Deselect(g);
             }
         }
     }
