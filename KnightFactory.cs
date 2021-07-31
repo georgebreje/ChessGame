@@ -8,9 +8,9 @@ namespace ChessGame
 {
     public class KnightFactory : IPieceFactory
     {
-        public override IPiece CreatePiece()
+        public override IPiece CreatePiece(Field f, CustomPictureBox cpb)
         {
-            throw new NotImplementedException();
+            return new Knight(f, cpb);
         }
     }
 }

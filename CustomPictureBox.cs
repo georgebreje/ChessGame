@@ -20,7 +20,7 @@ namespace ChessGame
             
         }
 
-        Point point;
+        //Point point;
 
         //protected override void OnMouseMove(MouseEventArgs e)
         //{

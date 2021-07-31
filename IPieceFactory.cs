@@ -8,12 +8,12 @@ namespace ChessGame
 {
     public abstract class IPieceFactory
     {
-        public IPiece MakePiece()
+        public IPiece MakePiece(Field f, CustomPictureBox cpb)
         {
-            IPiece piece = CreatePiece();
+            IPiece piece = CreatePiece(f, cpb);
 
             return piece;
         }
-        public abstract IPiece CreatePiece();
+        public abstract IPiece CreatePiece(Field f, CustomPictureBox cpb);
     }
 }

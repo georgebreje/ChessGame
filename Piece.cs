@@ -11,12 +11,16 @@ namespace ChessGame
     public abstract class Piece 
     {
         public  Color ColorHolder { get; set; }
+        
         public  CustomPictureBox PictureBox { get; set; }
+        
+        public Field Field { get; set; }
 
         public bool Selected { get; set; }
         public  Piece(Field f, CustomPictureBox pictureBox)
         {
             PictureBox = pictureBox;
+            Field = f;
             PictureBox.BackColor = f.Color;
             PictureBox.Location = new Point(f.points[0].X, f.points[0].Y);
             PictureBox.Size = new Size(f.Width, f.Height);
@@ -24,7 +28,6 @@ namespace ChessGame
             ColorHolder = f.Color;
             Selected = PictureBox.Selected;
         }
-        public abstract void Direction();
 
 
         public void Deselect()
@@ -32,8 +35,5 @@ namespace ChessGame
             PictureBox.BackColor = ColorHolder; 
         }
 
-        
-
-       
     }
 }

@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 
 namespace ChessGame
 {
-    public class Knight : IPiece
+    public class Knight : Piece, IPiece
     {
-        public CustomPictureBox PictureBox { get; set; }
 
-        public Knight(Field f, CustomPictureBox cpb)
+        public Knight(Field f, CustomPictureBox cpb) : base(f, cpb)
         {
             PictureBox = cpb;
+        }
+
+        public void Direction()
+        {
+            throw new NotImplementedException();
         }
     }
 }

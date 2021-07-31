@@ -38,7 +38,10 @@ namespace ChessGame
             FillMatrix();
             //Dict.Add(Fields[0, 0], new Rook(Fields[0,0], pictureBox1));
             DictInit();
-            
+
+            KnightFactory knightFactory = new KnightFactory();
+            IPiece wKnight = knightFactory.CreatePiece(Fields[0, 1], wKnight1);
+
 
 
         }
@@ -58,7 +61,7 @@ namespace ChessGame
         private void DictInit()
         {
             Dict.Add(Fields[0, 0], new Rook(Fields[0, 0], wRook1));
-            Dict.Add(Fields[0, 1], new Rook(Fields[0, 1], wKnight1));
+            //Dict.Add(Fields[0, 1], new Rook(Fields[0, 1], wKnight1));
             Dict.Add(Fields[0, 2], new Rook(Fields[0, 2], wBishop1));
             Dict.Add(Fields[0, 3], new Rook(Fields[0, 3], wQueen));
             Dict.Add(Fields[0, 4], new Rook(Fields[0, 4], wKing));
@@ -74,6 +77,11 @@ namespace ChessGame
             Dict.Add(Fields[1, 5], new Pawn(Fields[1, 5], whitePawn6));
             Dict.Add(Fields[1, 6], new Pawn(Fields[1, 6], whitePawn7));
             Dict.Add(Fields[1, 7], new Pawn(Fields[1, 7], whitePawn8));
+        }
+
+        private void FillFields()
+        {
+
         }
 
         private void FillMatrix()

@@ -10,7 +10,7 @@ namespace ChessGame
 {
     public interface IPiece
     {
-        CustomPictureBox PictureBox { get; set; }
+        void Direction();
 
     }
 }

@@ -8,15 +8,15 @@ using System.Windows.Forms;
 
 namespace ChessGame
 {
-    public class Pawn : Piece
+    public class Pawn : Piece, IPiece
     {
         public Pawn(Field f, CustomPictureBox pictureBox) : base(f, pictureBox)
         {
 
         }
-        public override void Direction()
+        public void Direction()
         {
-
+            throw new NotImplementedException();
         }
     }
 }
