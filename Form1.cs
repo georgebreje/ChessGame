@@ -54,7 +54,7 @@ namespace ChessGame
             FieldH = Latime / 8;
             FillMatrix();
             ResizePiece(FieldW, FieldH);
-
+            FillFields();
         }
 
 
@@ -109,8 +109,11 @@ namespace ChessGame
             }
         }
 
+        // 
         private void ResizePiece(int width, int height)
         {
+            row = 8;
+            col = 7;
             foreach (KeyValuePair<Field, Piece> kvp in Dict)
             {
                 kvp.Value.PictureBox.Height = height;
@@ -129,9 +132,9 @@ namespace ChessGame
             }
         }
 
+        // resize each field of the table when panel resizes / is created
         private void FillMatrix()
         {
-            var customPicBoxes = GetAll(this, typeof(CustomPictureBox));
             Field.heightToAdd = 0;
             for (int i = 0; i < 8; i++)
             {
