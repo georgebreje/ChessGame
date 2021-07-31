@@ -8,8 +8,9 @@ using System.Drawing;
 
 namespace ChessGame
 {
-    public class Rook : Piece
+    public class Rook : Piece, IPiece
     {
+
         public Rook(Field f, CustomPictureBox pictureBox) : base(f,pictureBox)
         {
 

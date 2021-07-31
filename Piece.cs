@@ -12,9 +12,13 @@ namespace ChessGame
     {
         public  Color ColorHolder { get; set; }
         
-        public  CustomPictureBox PictureBox { get; set; }
+        public CustomPictureBox PictureBox { get; set; }
         
         public Field Field { get; set; }
+
+        public bool White { get; set; }
+
+        public bool Black { get; set; }
 
         public bool Selected { get; set; }
         public  Piece(Field f, CustomPictureBox pictureBox)
@@ -27,6 +31,10 @@ namespace ChessGame
             PictureBox.AuxColor = f.Color;
             ColorHolder = f.Color;
             Selected = PictureBox.Selected;
+            if (PictureBox.Name.Contains("white"))
+                White = true;
+            else if (PictureBox.Name.Contains("black"))
+                Black = true;
         }
 
 

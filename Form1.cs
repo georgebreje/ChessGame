@@ -37,10 +37,8 @@ namespace ChessGame
             Lungime = p.Width;
             FillMatrix();
             //Dict.Add(Fields[0, 0], new Rook(Fields[0,0], pictureBox1));
-            DictInit();
-
-            KnightFactory knightFactory = new KnightFactory();
-            IPiece wKnight = knightFactory.CreatePiece(Fields[0, 1], wKnight1);
+            //DictInit();
+            FillFields();
 
 
 
@@ -55,37 +53,85 @@ namespace ChessGame
             FieldW = Lungime / 8;
             FieldH = Latime / 8;
             FillMatrix();
+            ResizePiece(FieldW, FieldH);
 
         }
 
-        private void DictInit()
-        {
-            Dict.Add(Fields[0, 0], new Rook(Fields[0, 0], wRook1));
-            //Dict.Add(Fields[0, 1], new Rook(Fields[0, 1], wKnight1));
-            Dict.Add(Fields[0, 2], new Rook(Fields[0, 2], wBishop1));
-            Dict.Add(Fields[0, 3], new Rook(Fields[0, 3], wQueen));
-            Dict.Add(Fields[0, 4], new Rook(Fields[0, 4], wKing));
-            Dict.Add(Fields[0, 5], new Rook(Fields[0, 5], wBishop2));
-            Dict.Add(Fields[0, 6], new Rook(Fields[0, 6], wKnight2));
-            Dict.Add(Fields[0, 7], new Rook(Fields[0, 7], wRook2));
 
-            Dict.Add(Fields[1, 0], new Pawn(Fields[1, 0], whitePawn1));
-            Dict.Add(Fields[1, 1], new Pawn(Fields[1, 1], whitePawn2));
-            Dict.Add(Fields[1, 2], new Pawn(Fields[1, 2], whitePawn3));
-            Dict.Add(Fields[1, 3], new Pawn(Fields[1, 3], whitePawn4));
-            Dict.Add(Fields[1, 4], new Pawn(Fields[1, 4], whitePawn5));
-            Dict.Add(Fields[1, 5], new Pawn(Fields[1, 5], whitePawn6));
-            Dict.Add(Fields[1, 6], new Pawn(Fields[1, 6], whitePawn7));
-            Dict.Add(Fields[1, 7], new Pawn(Fields[1, 7], whitePawn8));
-        }
-
+        int row = 8, col = 7;
         private void FillFields()
         {
+            var customPicBoxes = GetAll(this, typeof(CustomPictureBox));
+            foreach (CustomPictureBox cpb in customPicBoxes)
+            {
+                if (col < 0 && row == 0)
+                    break;
+                if (col < 0)
+                    col = 7;
+                if (col == 7)
+                    if (row != 0)
+                        row--;
+                if (row == 5)
+                    row = 1;
+                string pieceName = cpb.Name;
+                IPieceFactory pieceFactory;
+                if (pieceName.Contains("Knight"))
+                {
+                    pieceFactory = new KnightFactory();
+                    Dict.Add(Fields[row, col], pieceFactory.MakePiece(Fields[row, col], cpb));
+                }
+                else if (pieceName.Contains("Rook"))
+                {
+                    pieceFactory = new RookFactory();
+                    Dict.Add(Fields[row, col], pieceFactory.MakePiece(Fields[row, col], cpb));
+                }
+                else if (pieceName.Contains("Pawn"))
+                {
+                    pieceFactory = new PawnFactory();
+                    Dict.Add(Fields[row, col], pieceFactory.MakePiece(Fields[row, col], cpb));
+                }
+                else if (pieceName.Contains("Bishop"))
+                {
+                    pieceFactory = new BishopFactory();
+                    Dict.Add(Fields[row, col], pieceFactory.MakePiece(Fields[row, col], cpb));
+                }
+                else if (pieceName.Contains("King"))
+                {
+                    pieceFactory = new KingFactory();
+                    Dict.Add(Fields[row, col], pieceFactory.MakePiece(Fields[row, col], cpb));
+                }
+                else if (pieceName.Contains("Queen"))
+                {
+                    pieceFactory = new QueenFactory();
+                    Dict.Add(Fields[row, col], pieceFactory.MakePiece(Fields[row, col], cpb));
+                }
+                col--;
+            }
+        }
 
+        private void ResizePiece(int width, int height)
+        {
+            foreach (KeyValuePair<Field, Piece> kvp in Dict)
+            {
+                kvp.Value.PictureBox.Height = height;
+                kvp.Value.PictureBox.Width = width;
+                kvp.Value.PictureBox.Location = new Point(kvp.Key.points[0].X, kvp.Key.points[0].Y);
+            }
+        }
+
+        private void ReplacePiece(int width, int height)
+        {
+            foreach (KeyValuePair<Field, Piece> kvp in Dict)
+            {
+                kvp.Key.Height = FieldH;
+                kvp.Key.Width = FieldW;
+                kvp.Value.PictureBox.Location = new Point(kvp.Key.Width, kvp.Key.Height) ;
+            }
         }
 
         private void FillMatrix()
         {
+            var customPicBoxes = GetAll(this, typeof(CustomPictureBox));
             Field.heightToAdd = 0;
             for (int i = 0; i < 8; i++)
             {
@@ -93,9 +139,7 @@ namespace ChessGame
                 for (int j = 0; j < 8; j++)
                 {
                     Field f = new Field(FieldW, FieldH);
-                    whitePawn1.Width = FieldW;
-                    whitePawn1.Height = FieldH;
-
+                    
                     if (i % 2 == 0)
                     {
                         if (j % 2 == 0)
@@ -112,15 +156,27 @@ namespace ChessGame
                             f.CreatePolygon(grp, Color.SaddleBrown);
                     }
                     Fields[i, j] = f;
+
                     Field.widthToAdd += FieldW;
                 }
                 Field.heightToAdd += FieldH;
+                
             }
+        }
+
+        // functionality to iterate trough what Form1 contains
+        public IEnumerable<Control> GetAll(Control control, Type type)
+        {
+            var controls = control.Controls.Cast<Control>();
+
+            return controls.SelectMany(ctrl => GetAll(ctrl, type))
+                                      .Concat(controls)
+                                      .Where(c => c.GetType() == type);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         int iToDeselect = 0;

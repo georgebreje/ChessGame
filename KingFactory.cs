@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace ChessGame
 {
-    public class KnightFactory : IPieceFactory
+    public class KingFactory : IPieceFactory
     {
-        
         public override Piece CreatePiece(Field f, CustomPictureBox cpb)
         {
-            return new Knight(f, cpb);
+            return new King(f, cpb);
         }
     }
 }
