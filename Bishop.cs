@@ -13,7 +13,8 @@ namespace ChessGame
         {
 
         }
-        public void Direction()
+
+        public override void Direction()
         {
 
         }

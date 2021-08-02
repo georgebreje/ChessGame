@@ -17,16 +17,16 @@ namespace ChessGame
         public int FieldH { get; set; }
         public int FieldW { get; set; }
 
-        public Field[,] Fields = new Field[8, 8];
+        public static Field[,] Fields = new Field[8, 8];
 
-        Dictionary<Field, Piece> Dict = new Dictionary<Field, Piece>();
+        public static Dictionary<Field, Piece> Dict = new Dictionary<Field, Piece>();
 
-
-        Graphics grp;
-
+        public static Graphics grp;
+        
         public Form1()
         {
             InitializeComponent();
+            
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -36,12 +36,7 @@ namespace ChessGame
             Latime = p.Height;
             Lungime = p.Width;
             FillMatrix();
-            //Dict.Add(Fields[0, 0], new Rook(Fields[0,0], pictureBox1));
-            //DictInit();
-            FillFields();
-
-
-
+            
         }
 
         private void panel1_SizeChanged(object sender, EventArgs e)
@@ -55,6 +50,7 @@ namespace ChessGame
             FillMatrix();
             ResizePiece(FieldW, FieldH);
             FillFields();
+
         }
 
 
@@ -109,7 +105,7 @@ namespace ChessGame
             }
         }
 
-        // 
+        // update picturebox size and location with the new field data
         private void ResizePiece(int width, int height)
         {
             row = 8;
@@ -122,15 +118,6 @@ namespace ChessGame
             }
         }
 
-        private void ReplacePiece(int width, int height)
-        {
-            foreach (KeyValuePair<Field, Piece> kvp in Dict)
-            {
-                kvp.Key.Height = FieldH;
-                kvp.Key.Width = FieldW;
-                kvp.Value.PictureBox.Location = new Point(kvp.Key.Width, kvp.Key.Height) ;
-            }
-        }
 
         // resize each field of the table when panel resizes / is created
         private void FillMatrix()
@@ -159,7 +146,8 @@ namespace ChessGame
                             f.CreatePolygon(grp, Color.SaddleBrown);
                     }
                     Fields[i, j] = f;
-
+                    f.Row = i;
+                    f.Col = j;
                     Field.widthToAdd += FieldW;
                 }
                 Field.heightToAdd += FieldH;
@@ -179,13 +167,16 @@ namespace ChessGame
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            FillFields();
+            ResizePiece(Lungime / 8, Latime / 8);
             
-        }
 
+        }
         int iToDeselect = 0;
         int jToDeselect = 0;
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
+            // move picture box in another field
             Fields[iToDeselect, jToDeselect].Deselect(grp);
 
             for (int i = 0; i < 8; i++)
@@ -195,25 +186,15 @@ namespace ChessGame
                     if (e.X > Fields[i, j].points[0].X && e.X < Fields[i, j].points[2].X
                      && e.Y > Fields[i, j].points[0].Y && e.Y < Fields[i, j].points[2].Y)
                     {
-                        if (i == iToDeselect && j == jToDeselect)
-                        {
-                            Fields[i, j].ClickCount++;
-                            if (Fields[i, j].ClickCount % 2 == 0)
-                                Fields[i, j].Deselect(grp);
-                            else
-                                Fields[i, j].Select(grp);
-                        }
-                        else
-                        {
-                            Fields[i, j].Select(grp);
-                            Fields[i, j].ClickCount++;
-                            iToDeselect = i;
-                            jToDeselect = j;
-                            break;
-                        }
+                        Dict.Add(Fields[i, j], Dict[Fields[1, 1]]);
                     }
                 }
             }
+        }
+
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            
         }
     }
 }

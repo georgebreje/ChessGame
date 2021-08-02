@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ChessGame
 {
-    public abstract class Piece 
+    public abstract class Piece : IPiece
     {
         public  Color ColorHolder { get; set; }
         
@@ -29,6 +29,7 @@ namespace ChessGame
             PictureBox.Location = new Point(f.points[0].X, f.points[0].Y);
             PictureBox.Size = new Size(f.Width, f.Height);
             PictureBox.AuxColor = f.Color;
+            PictureBox.Piece = this;
             ColorHolder = f.Color;
             Selected = PictureBox.Selected;
             if (PictureBox.Name.Contains("white"))
@@ -43,5 +44,9 @@ namespace ChessGame
             PictureBox.BackColor = ColorHolder; 
         }
 
+        public virtual void Direction()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

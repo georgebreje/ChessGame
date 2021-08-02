@@ -150,6 +150,7 @@ namespace ChessGame
             this.whiteRook1.Image = ((System.Drawing.Image)(resources.GetObject("whiteRook1.Image")));
             this.whiteRook1.Location = new System.Drawing.Point(580, 481);
             this.whiteRook1.Name = "whiteRook1";
+            this.whiteRook1.Piece = null;
             this.whiteRook1.Selected = false;
             this.whiteRook1.Size = new System.Drawing.Size(50, 50);
             this.whiteRook1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -161,6 +162,7 @@ namespace ChessGame
             this.whiteKnight1.Image = ((System.Drawing.Image)(resources.GetObject("whiteKnight1.Image")));
             this.whiteKnight1.Location = new System.Drawing.Point(499, 481);
             this.whiteKnight1.Name = "whiteKnight1";
+            this.whiteKnight1.Piece = null;
             this.whiteKnight1.Selected = false;
             this.whiteKnight1.Size = new System.Drawing.Size(50, 50);
             this.whiteKnight1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -172,6 +174,7 @@ namespace ChessGame
             this.whiteBishop1.Image = ((System.Drawing.Image)(resources.GetObject("whiteBishop1.Image")));
             this.whiteBishop1.Location = new System.Drawing.Point(417, 481);
             this.whiteBishop1.Name = "whiteBishop1";
+            this.whiteBishop1.Piece = null;
             this.whiteBishop1.Selected = false;
             this.whiteBishop1.Size = new System.Drawing.Size(50, 50);
             this.whiteBishop1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -183,6 +186,7 @@ namespace ChessGame
             this.whiteKing.Image = ((System.Drawing.Image)(resources.GetObject("whiteKing.Image")));
             this.whiteKing.Location = new System.Drawing.Point(338, 481);
             this.whiteKing.Name = "whiteKing";
+            this.whiteKing.Piece = null;
             this.whiteKing.Selected = false;
             this.whiteKing.Size = new System.Drawing.Size(50, 50);
             this.whiteKing.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -194,6 +198,7 @@ namespace ChessGame
             this.whiteQueen.Image = ((System.Drawing.Image)(resources.GetObject("whiteQueen.Image")));
             this.whiteQueen.Location = new System.Drawing.Point(261, 481);
             this.whiteQueen.Name = "whiteQueen";
+            this.whiteQueen.Piece = null;
             this.whiteQueen.Selected = false;
             this.whiteQueen.Size = new System.Drawing.Size(50, 50);
             this.whiteQueen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -205,6 +210,7 @@ namespace ChessGame
             this.whiteBishop2.Image = ((System.Drawing.Image)(resources.GetObject("whiteBishop2.Image")));
             this.whiteBishop2.Location = new System.Drawing.Point(175, 481);
             this.whiteBishop2.Name = "whiteBishop2";
+            this.whiteBishop2.Piece = null;
             this.whiteBishop2.Selected = false;
             this.whiteBishop2.Size = new System.Drawing.Size(50, 50);
             this.whiteBishop2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -216,6 +222,7 @@ namespace ChessGame
             this.whiteKnight2.Image = ((System.Drawing.Image)(resources.GetObject("whiteKnight2.Image")));
             this.whiteKnight2.Location = new System.Drawing.Point(94, 481);
             this.whiteKnight2.Name = "whiteKnight2";
+            this.whiteKnight2.Piece = null;
             this.whiteKnight2.Selected = false;
             this.whiteKnight2.Size = new System.Drawing.Size(50, 50);
             this.whiteKnight2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -227,6 +234,7 @@ namespace ChessGame
             this.whiteRook2.Image = ((System.Drawing.Image)(resources.GetObject("whiteRook2.Image")));
             this.whiteRook2.Location = new System.Drawing.Point(18, 481);
             this.whiteRook2.Name = "whiteRook2";
+            this.whiteRook2.Piece = null;
             this.whiteRook2.Selected = false;
             this.whiteRook2.Size = new System.Drawing.Size(50, 50);
             this.whiteRook2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -238,6 +246,7 @@ namespace ChessGame
             this.whitePawn1.Image = ((System.Drawing.Image)(resources.GetObject("whitePawn1.Image")));
             this.whitePawn1.Location = new System.Drawing.Point(580, 406);
             this.whitePawn1.Name = "whitePawn1";
+            this.whitePawn1.Piece = null;
             this.whitePawn1.Selected = false;
             this.whitePawn1.Size = new System.Drawing.Size(50, 50);
             this.whitePawn1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -249,6 +258,7 @@ namespace ChessGame
             this.whitePawn2.Image = ((System.Drawing.Image)(resources.GetObject("whitePawn2.Image")));
             this.whitePawn2.Location = new System.Drawing.Point(499, 406);
             this.whitePawn2.Name = "whitePawn2";
+            this.whitePawn2.Piece = null;
             this.whitePawn2.Selected = false;
             this.whitePawn2.Size = new System.Drawing.Size(50, 50);
             this.whitePawn2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -260,6 +270,7 @@ namespace ChessGame
             this.whitePawn3.Image = ((System.Drawing.Image)(resources.GetObject("whitePawn3.Image")));
             this.whitePawn3.Location = new System.Drawing.Point(417, 406);
             this.whitePawn3.Name = "whitePawn3";
+            this.whitePawn3.Piece = null;
             this.whitePawn3.Selected = false;
             this.whitePawn3.Size = new System.Drawing.Size(50, 50);
             this.whitePawn3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -271,6 +282,7 @@ namespace ChessGame
             this.whitePawn4.Image = ((System.Drawing.Image)(resources.GetObject("whitePawn4.Image")));
             this.whitePawn4.Location = new System.Drawing.Point(338, 406);
             this.whitePawn4.Name = "whitePawn4";
+            this.whitePawn4.Piece = null;
             this.whitePawn4.Selected = false;
             this.whitePawn4.Size = new System.Drawing.Size(50, 50);
             this.whitePawn4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -282,6 +294,7 @@ namespace ChessGame
             this.whitePawn5.Image = ((System.Drawing.Image)(resources.GetObject("whitePawn5.Image")));
             this.whitePawn5.Location = new System.Drawing.Point(261, 406);
             this.whitePawn5.Name = "whitePawn5";
+            this.whitePawn5.Piece = null;
             this.whitePawn5.Selected = false;
             this.whitePawn5.Size = new System.Drawing.Size(50, 50);
             this.whitePawn5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -293,6 +306,7 @@ namespace ChessGame
             this.whitePawn6.Image = ((System.Drawing.Image)(resources.GetObject("whitePawn6.Image")));
             this.whitePawn6.Location = new System.Drawing.Point(175, 406);
             this.whitePawn6.Name = "whitePawn6";
+            this.whitePawn6.Piece = null;
             this.whitePawn6.Selected = false;
             this.whitePawn6.Size = new System.Drawing.Size(50, 50);
             this.whitePawn6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -304,6 +318,7 @@ namespace ChessGame
             this.whitePawn7.Image = ((System.Drawing.Image)(resources.GetObject("whitePawn7.Image")));
             this.whitePawn7.Location = new System.Drawing.Point(94, 406);
             this.whitePawn7.Name = "whitePawn7";
+            this.whitePawn7.Piece = null;
             this.whitePawn7.Selected = false;
             this.whitePawn7.Size = new System.Drawing.Size(50, 50);
             this.whitePawn7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -315,6 +330,7 @@ namespace ChessGame
             this.whitePawn8.Image = ((System.Drawing.Image)(resources.GetObject("whitePawn8.Image")));
             this.whitePawn8.Location = new System.Drawing.Point(18, 406);
             this.whitePawn8.Name = "whitePawn8";
+            this.whitePawn8.Piece = null;
             this.whitePawn8.Selected = false;
             this.whitePawn8.Size = new System.Drawing.Size(50, 50);
             this.whitePawn8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -326,6 +342,7 @@ namespace ChessGame
             this.blackPawn1.Image = ((System.Drawing.Image)(resources.GetObject("blackPawn1.Image")));
             this.blackPawn1.Location = new System.Drawing.Point(580, 99);
             this.blackPawn1.Name = "blackPawn1";
+            this.blackPawn1.Piece = null;
             this.blackPawn1.Selected = false;
             this.blackPawn1.Size = new System.Drawing.Size(50, 50);
             this.blackPawn1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -337,6 +354,7 @@ namespace ChessGame
             this.blackPawn2.Image = ((System.Drawing.Image)(resources.GetObject("blackPawn2.Image")));
             this.blackPawn2.Location = new System.Drawing.Point(499, 99);
             this.blackPawn2.Name = "blackPawn2";
+            this.blackPawn2.Piece = null;
             this.blackPawn2.Selected = false;
             this.blackPawn2.Size = new System.Drawing.Size(50, 50);
             this.blackPawn2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -348,6 +366,7 @@ namespace ChessGame
             this.blackPawn3.Image = ((System.Drawing.Image)(resources.GetObject("blackPawn3.Image")));
             this.blackPawn3.Location = new System.Drawing.Point(417, 99);
             this.blackPawn3.Name = "blackPawn3";
+            this.blackPawn3.Piece = null;
             this.blackPawn3.Selected = false;
             this.blackPawn3.Size = new System.Drawing.Size(50, 50);
             this.blackPawn3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -359,6 +378,7 @@ namespace ChessGame
             this.blackPawn4.Image = ((System.Drawing.Image)(resources.GetObject("blackPawn4.Image")));
             this.blackPawn4.Location = new System.Drawing.Point(338, 99);
             this.blackPawn4.Name = "blackPawn4";
+            this.blackPawn4.Piece = null;
             this.blackPawn4.Selected = false;
             this.blackPawn4.Size = new System.Drawing.Size(50, 50);
             this.blackPawn4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -370,6 +390,7 @@ namespace ChessGame
             this.blackPawn5.Image = ((System.Drawing.Image)(resources.GetObject("blackPawn5.Image")));
             this.blackPawn5.Location = new System.Drawing.Point(261, 99);
             this.blackPawn5.Name = "blackPawn5";
+            this.blackPawn5.Piece = null;
             this.blackPawn5.Selected = false;
             this.blackPawn5.Size = new System.Drawing.Size(50, 50);
             this.blackPawn5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -381,6 +402,7 @@ namespace ChessGame
             this.blackPawn6.Image = ((System.Drawing.Image)(resources.GetObject("blackPawn6.Image")));
             this.blackPawn6.Location = new System.Drawing.Point(175, 99);
             this.blackPawn6.Name = "blackPawn6";
+            this.blackPawn6.Piece = null;
             this.blackPawn6.Selected = false;
             this.blackPawn6.Size = new System.Drawing.Size(50, 50);
             this.blackPawn6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -392,6 +414,7 @@ namespace ChessGame
             this.blackPawn7.Image = ((System.Drawing.Image)(resources.GetObject("blackPawn7.Image")));
             this.blackPawn7.Location = new System.Drawing.Point(94, 99);
             this.blackPawn7.Name = "blackPawn7";
+            this.blackPawn7.Piece = null;
             this.blackPawn7.Selected = false;
             this.blackPawn7.Size = new System.Drawing.Size(50, 50);
             this.blackPawn7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -403,6 +426,7 @@ namespace ChessGame
             this.blackPawn8.Image = ((System.Drawing.Image)(resources.GetObject("blackPawn8.Image")));
             this.blackPawn8.Location = new System.Drawing.Point(18, 99);
             this.blackPawn8.Name = "blackPawn8";
+            this.blackPawn8.Piece = null;
             this.blackPawn8.Selected = false;
             this.blackPawn8.Size = new System.Drawing.Size(50, 50);
             this.blackPawn8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -414,6 +438,7 @@ namespace ChessGame
             this.blackRook1.Image = ((System.Drawing.Image)(resources.GetObject("blackRook1.Image")));
             this.blackRook1.Location = new System.Drawing.Point(580, 17);
             this.blackRook1.Name = "blackRook1";
+            this.blackRook1.Piece = null;
             this.blackRook1.Selected = false;
             this.blackRook1.Size = new System.Drawing.Size(50, 50);
             this.blackRook1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -425,6 +450,7 @@ namespace ChessGame
             this.blackKnight1.Image = ((System.Drawing.Image)(resources.GetObject("blackKnight1.Image")));
             this.blackKnight1.Location = new System.Drawing.Point(499, 17);
             this.blackKnight1.Name = "blackKnight1";
+            this.blackKnight1.Piece = null;
             this.blackKnight1.Selected = false;
             this.blackKnight1.Size = new System.Drawing.Size(50, 50);
             this.blackKnight1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -436,6 +462,7 @@ namespace ChessGame
             this.blackBishop1.Image = ((System.Drawing.Image)(resources.GetObject("blackBishop1.Image")));
             this.blackBishop1.Location = new System.Drawing.Point(417, 17);
             this.blackBishop1.Name = "blackBishop1";
+            this.blackBishop1.Piece = null;
             this.blackBishop1.Selected = false;
             this.blackBishop1.Size = new System.Drawing.Size(50, 50);
             this.blackBishop1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -447,6 +474,7 @@ namespace ChessGame
             this.blackKing.Image = ((System.Drawing.Image)(resources.GetObject("blackKing.Image")));
             this.blackKing.Location = new System.Drawing.Point(338, 17);
             this.blackKing.Name = "blackKing";
+            this.blackKing.Piece = null;
             this.blackKing.Selected = false;
             this.blackKing.Size = new System.Drawing.Size(50, 50);
             this.blackKing.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -458,6 +486,7 @@ namespace ChessGame
             this.blackQueen.Image = ((System.Drawing.Image)(resources.GetObject("blackQueen.Image")));
             this.blackQueen.Location = new System.Drawing.Point(261, 17);
             this.blackQueen.Name = "blackQueen";
+            this.blackQueen.Piece = null;
             this.blackQueen.Selected = false;
             this.blackQueen.Size = new System.Drawing.Size(50, 50);
             this.blackQueen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -469,6 +498,7 @@ namespace ChessGame
             this.blackBishop2.Image = ((System.Drawing.Image)(resources.GetObject("blackBishop2.Image")));
             this.blackBishop2.Location = new System.Drawing.Point(175, 17);
             this.blackBishop2.Name = "blackBishop2";
+            this.blackBishop2.Piece = null;
             this.blackBishop2.Selected = false;
             this.blackBishop2.Size = new System.Drawing.Size(50, 50);
             this.blackBishop2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -480,6 +510,7 @@ namespace ChessGame
             this.blackKnight2.Image = ((System.Drawing.Image)(resources.GetObject("blackKnight2.Image")));
             this.blackKnight2.Location = new System.Drawing.Point(94, 17);
             this.blackKnight2.Name = "blackKnight2";
+            this.blackKnight2.Piece = null;
             this.blackKnight2.Selected = false;
             this.blackKnight2.Size = new System.Drawing.Size(50, 50);
             this.blackKnight2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -491,6 +522,7 @@ namespace ChessGame
             this.blackRook2.Image = ((System.Drawing.Image)(resources.GetObject("blackRook2.Image")));
             this.blackRook2.Location = new System.Drawing.Point(18, 17);
             this.blackRook2.Name = "blackRook2";
+            this.blackRook2.Piece = null;
             this.blackRook2.Selected = false;
             this.blackRook2.Size = new System.Drawing.Size(50, 50);
             this.blackRook2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -506,6 +538,7 @@ namespace ChessGame
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.whiteRook1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.whiteKnight1)).EndInit();

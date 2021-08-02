@@ -17,6 +17,8 @@ namespace ChessGame
         public Color Color { get; set; }
         public bool Selected { get; set; } = true;
         public int ClickCount { get; set; }
+        public int Row { get; set; }
+        public int Col { get; set; }
         
         public Field(int width, int height)
         {
@@ -44,11 +46,11 @@ namespace ChessGame
 
         public void Deselect(Graphics g)
         {
-            g.FillPolygon(new SolidBrush(Color), points);
+            g.DrawPolygon(new Pen(Color), points);
 
             if (Selected == false)
             {
-                g.FillPolygon(new SolidBrush(Color), points);
+                g.DrawPolygon(new Pen(Color), points);
                 Selected = true;
             }
         }
@@ -57,7 +59,7 @@ namespace ChessGame
         {
             if (Selected == true)
             {
-                g.FillPolygon(new SolidBrush(Color.Yellow), points);
+                g.DrawPolygon(new Pen(Color.Yellow), points);
                 Selected = false;
             }
             else

@@ -63,6 +63,7 @@
     <Compile Include="King.cs" />
     <Compile Include="KingFactory.cs" />
     <Compile Include="Knight.cs" />
+    <Compile Include="MoveEngine.cs" />
     <Compile Include="Pawn.cs" />
     <Compile Include="KnightFactory.cs" />
     <Compile Include="PawnFactory.cs" />

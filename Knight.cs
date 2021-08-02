@@ -14,7 +14,7 @@ namespace ChessGame
             PictureBox = cpb;
         }
 
-        public void Direction()
+        public override void Direction()
         {
             throw new NotImplementedException();
         }
